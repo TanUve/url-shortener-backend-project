@@ -1,9 +1,15 @@
-var router = require("express").Router();
-const express = require("express");
+const userRouter = require("#Routes/user.routes.js");
 
+const express = require("express");
 
 const app = express();
 
-//TODO añadir middleware, routes...
+//Middlewarea
+app.use(express.json());
 
-module.exports= router;
+
+//Routes
+app.use('/user', userRouter)
+
+
+module.exports= app;
