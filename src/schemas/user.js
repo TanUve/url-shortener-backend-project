@@ -1,36 +1,31 @@
 const mongoose = require('mongoose');
-const { Schema, model } = mongoose;
 
-const userSchema = new Schema({
-    _id: {
-        type: String,
-        _id: false //Esto hace que mongo no cree el id automáticamente y se lo cree yo poniéndole el formato que quiero
-    },
+const userSchema = mongoose.Schema({
     name: {
         type: String,
-        require: true,
-        minLength: 3,
-        maxLength: 35
+        required: true,
+        min: 3,
+        max: 35
     },
     username: {
         type: String,
-        require: true,
-        minLength: 4,
-        maxLength: 15
+        required: true,
+        min: 4,
+        max: 15
     },
     email: {
         type: String,
-        require: true,
+        required: true,
         unique: true,
-        minLength: 3,
-        maxLength: 55
+        min: 6,
+        max: 55
     },
     password: {
         type: String,
-        require: true
+        required: true,
+        min:10,
+        max: 35
     }
 })
 
-const userModel = model("User", userSchema)
-
-module.exports = userModel;
+module.exports = mongoose.model("User", userSchema);
