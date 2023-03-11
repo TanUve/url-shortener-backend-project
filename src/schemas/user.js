@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
+    _id: {
+        type: String,
+        _id: false //Esto hace que mongo no cree el id automáticamente y se lo cree yo poniéndole el formato que quiero
+    },
     name: {
         type: String,
         require: true,
@@ -17,6 +21,7 @@ const userSchema = new Schema({
     email: {
         type: String,
         require: true,
+        unique: true,
         minLength: 3,
         maxLength: 55
     },
