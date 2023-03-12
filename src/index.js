@@ -34,7 +34,7 @@ const db = async () => {
     await connectDB(uri)
     const PORT = process.env.PORT || 3008;
     app.listen(PORT, () => {
-        console.log(`servidor andando en: ${PORT}`)
+        console.log(`Server port: ${PORT}`)
     })
 }
 db();
