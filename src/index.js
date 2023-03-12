@@ -17,9 +17,12 @@ const uri = process.env.MONGO_URI;
 // import routes
 
 const userRoutes = require('./routes/user.js')
+const validateToken = require('./middlewares/validateToken');
+const admin=require('./routes/admin');
 
 // route middlewares
 app.use('/api/users', userRoutes);
+app.use('/api/admin', validateToken,admin);
 
 app.get('/', (req, res) => {
     res.json({

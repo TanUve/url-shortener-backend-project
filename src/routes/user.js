@@ -41,7 +41,7 @@ userRouter.post('/login', async (req, res) => {
 
     res.header('auth-token', token).json({
         error: null,
-        data: `Welcome ${user.name} ` + { token }
+        data: `Welcome ${user.name} ` +  token 
     })
 
 
