@@ -1,49 +1,25 @@
 {
-    "name": "url-shortener-backend-project",
-    "version": "1.0.0",
-    "description": "Ulr shortener backend project",
-    "scripts": {
-        "dev": "nodemon src/index.js",
-        "start": "node src/index.js",
-        "lint": "eslint src/**/*.js --fix",
-        "prettier": "prettier --write .",
-        "prepare": "husky install",
-        "postinstall": "npm run prepare"
-    },
-    "dependencies": {
-        "@hapi/joi": "^17.1.1",
-        "bcrypt": "^5.1.0",
-        "dotenv": "^16.0.3",
-        "express": "^4.18.2",
-        "http": "^0.0.1-security",
-        "jsonwebtoken": "^9.0.0",
-        "mongoose": "^6.10.2"
-    },
-    "author": {
-        "name": "Tania"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "eslint": "8.26.0",
-        "eslint-config-prettier": "8.5.0",
-        "eslint-config-standard": "17.0.0",
-        "eslint-plugin-import": "2.26.0",
-        "eslint-plugin-n": "15.3.0",
-        "eslint-plugin-promise": "6.1.1",
-        "husky": "8.0.1",
-        "lint-staged": "13.0.3",
-        "nodemon": "2.0.20",
-        "prettier": "2.7.1"
-    },
-    "imports": {
-        "#Lib/*": "./src/lib/*",
-        "#Config/*": "./src/config/*",
-        "#Controllers/*": "./src/controllers/*",
-        "#Routes/*": "./src/routes/*",
-        "#Schemas/*": "./src/schemas/*"
-    },
-    "lint-staged": {
-        "*.js": "eslint --fix",
-        "*.{js,md}": "prettier --write"
-    }
+  "name": "urlshortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.15.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.10.2",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  }
 }
