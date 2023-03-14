@@ -1,8 +1,6 @@
 const userController = {};
 const User = require('../models/Users.schema.js');
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const Joi = require('@hapi/joi');
 
 
 userController.registerUser = async (req, res) => {
@@ -26,18 +24,6 @@ userController.registerUser = async (req, res) => {
     } catch (err) {
         res.status(400).json(err)
     }
-};
-
-userController.loginUser = async (req, res) => {
-
-    const token = jwt.sign({
-        name: req.user.name,
-        id: req.user._id,
-    }, process.env.SECRET_TOKEN)
-    res.header('auth-token', token).json({
-        error: null,
-        data: token
-    })
 };
 
 
