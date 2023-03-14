@@ -4,10 +4,11 @@ const User = require('../models/Users.schema.js');
 const infoUser= async  (req, res) => {
 
     try {
-        const user= await User.findById()
-        return res.json({user})
+        //Le ponemos el método lean para que la consulta sea más rápida y nos devueva un objeto simple
+        const user= await User.findById(req.uid).lean();
+        return res.json({_id: user._id,username:user.username, name: user.name})
     } catch (error) {
-        
+        return res.status(500).json({error:"server error"})
     }
 
 }

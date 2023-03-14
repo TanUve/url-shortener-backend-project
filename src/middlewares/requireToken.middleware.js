@@ -14,14 +14,23 @@ const requireToken = (req, res, next) => {
         //Verificamos el token
         const { uid } = jwt.verify(token, process.env.SECRET_TOKEN);
 
-        //Le indicamos que el uis de la req sea el del jwt
+        //Le indicamos que el uid de la req sea el del jwt
         req.uid = uid;
 
         next()
 
     } catch (error) {
         console.log(error.message);
-        return res.status(401).json({ error: error.message });
+
+        //Vamos a indicar diferentes mensajes para que aparezcan cuando se de uno u otro error:
+        const TokenVerificationErrors = {
+            'invalid signature': 'JWT Signature is invalid',
+            "jwt expired": 'JWT Expired',
+            'invalid token': ' the token is invalid',
+            'No Bearer': 'Use Bearer format',
+            'jwt malformed': 'The jwt format is not correct'
+        }
+        return res.status(401).json({ error: TokenVerificationErrors[error.message] });
     }
 }
 
