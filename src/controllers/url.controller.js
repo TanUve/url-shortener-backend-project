@@ -1,21 +1,33 @@
 const urlController = {};
-const Url = require('../models/Urls.schema');
+const Url = require('../models/Urls.schema.js');
+const { nanoid } = require('nanoid');
 
 
 urlController.getUrls = async (req, res) => {
     try {
         const urls = await Url.find({ uid: req.uid });
-        return res.json(urls);
+        return res.json({ urls });
     } catch (error) {
-        return res.status(500).json({ error: 'error del servidor' })
+        return res.status(500).json({ error: 'server error' })
     }
 }
 
-// urlController.createUrl = (req, res) => {
+urlController.createUrl = async (req, res) => {
+    try {
+        const { originalUrl } = await req.body;
+        const newUrl = new Url({
+            originalUrl: originalUrl,
+            nanoUrl: nanoid(5),
+            uid: req.uid
+        })
+        const urlDB = await newUrl.save();
+        return res.status(201).json({ urlDB })
 
-//     res.send('Creamos una nueva url')
-// }
-
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: 'server error' })
+    }
+}
 // urlController.editUrl = (req, res) => {
 
 

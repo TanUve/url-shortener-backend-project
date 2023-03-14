@@ -1,11 +1,13 @@
 const router = require('express').Router();
 require('dotenv').config()
-const { getUrls } = require('../controllers/url.controller.js');
 const requireToken = require('../middlewares/requireToken.middleware.js');
+const { getUrls, createUrl } = require('../controllers/url.controller.js');
+
+
 
 router.get('/all', requireToken, getUrls);
 // router.get('/:id');
-// router.post('/createurl', createUrl);
+router.post('/create-url', requireToken, createUrl);
 // router.patch('/updateurl/:id')
 // router.delete('/deleteurl/:id')
 
