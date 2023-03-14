@@ -28,18 +28,3 @@ const userSchema = mongoose.Schema({
     }
 })
 module.exports = mongoose.model("User", userSchema);
-
-//Ciframos la contraseña para que en la DB no esté en texto plano
-// userSchema.methods.encryptPassword = async password => {
-//     const salt = await bcrypt.genSalt(10);
-//     return await bcrypt.hash(password, salt);
-// }
-// //comparamos las contraseñas cifradas para validar el acceso
-
-// userSchema.methods.matchPassword = async (password) => {
-//     await bcrypt.compare(password, this.password)
-// }
-// userSchema.methods.matchPassword = async (req, res) => {
-//     const validPassword = await bcrypt.compare(req.body.password, user.password);
-//     if (!validPassword) return res.status(400).json({ error: true, message: 'Invalid password' })}
-

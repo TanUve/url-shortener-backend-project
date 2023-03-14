@@ -19,7 +19,7 @@ const urlSchema = new mongoose.Schema({
     //tenemos que hacer referencia al id que crea mongoDB del schema del usuario
     uid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'User'
     }
 });
 

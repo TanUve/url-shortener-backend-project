@@ -1,27 +1,30 @@
 const urlController = {};
 const Url = require('../models/Urls.schema');
-const Joi = require('@hapi/joi');
 
 
-urlController.allUrls = (req, res) => {
-
-    res.send('Aquí se ven todas las urls')
+urlController.getUrls = async (req, res) => {
+    try {
+        const urls = await Url.find({ uid: req.uid });
+        return res.json(urls);
+    } catch (error) {
+        return res.status(500).json({ error: 'error del servidor' })
+    }
 }
 
-urlController.createUrl = (req, res) => {
+// urlController.createUrl = (req, res) => {
 
-    res.send('Creamos una nueva url')
-}
+//     res.send('Creamos una nueva url')
+// }
 
-urlController.editUrl = (req, res) => {
-
-
-}
-
-urlController.deleteUrl = (req, res) => {
+// urlController.editUrl = (req, res) => {
 
 
-}
+// }
+
+// urlController.deleteUrl = (req, res) => {
+
+
+// }
 
 
 module.exports = urlController;
