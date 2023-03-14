@@ -17,7 +17,7 @@ urlController.createUrl = async (req, res) => {
         const { originalUrl } = await req.body;
         const newUrl = new Url({
             originalUrl: originalUrl,
-            nanoUrl: nanoid(5),
+            nanoUrl: `https://shorty/${nanoid(5)}`,
             uid: req.uid
         })
         const urlDB = await newUrl.save();
