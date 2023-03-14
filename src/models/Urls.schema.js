@@ -5,16 +5,21 @@ const urlSchema = new mongoose.Schema({
     originalUrl:
     {
         type: String,
+        required: true,
+        trim: true
     },
 
-    shortUrl: {
+    nanoUrl: {
         type: String,
-        unique: true
+        required: true,
+        unique: true,
+        trim: true
     },
-
-    userId: {
+    //Cada vez que creemos una URL hay que indicar quién fue quien creó la URL y para indicar esto,
+    //tenemos que hacer referencia al id que crea mongoDB del schema del usuario
+    uid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Users'
     }
 });
 

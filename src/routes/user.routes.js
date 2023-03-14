@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { allUrls, createUrl } = require('../controllers/url.controller.js');
 const { loginUser } = require('../controllers/userLogin.controller.js');
 const { registerUser } = require('../controllers/userRegister.controller.js');
 const userLoginMiddleware = require('../middlewares/userLogin.middleware.js');
