@@ -15,5 +15,6 @@ app.use(bodyparser.json());
 
 //Dirección Rutas
 app.use('/api',require('./routes/index.routes'))
+app.use('/', require('./routes/redirect.routes'))
 
 module.exports = app;

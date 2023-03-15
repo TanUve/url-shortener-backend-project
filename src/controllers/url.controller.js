@@ -18,7 +18,7 @@ urlController.createUrl = async (req, res) => {
         const { originalUrl } = await req.body;
         const newUrl = new Url({
             originalUrl: originalUrl,
-            nanoUrl: `https://shorty/${nanoid(5)}`,
+            nanoUrl: nanoid(5),
             uid: req.uid
         })
         const urlDB = await newUrl.save();
@@ -55,10 +55,27 @@ urlController.getOneUrl = async (req, res) => {
     }
 
 }
-// urlController.editUrl = (req, res) => {
+urlController.getOneUrlNon = async (req, res) => {
+    try {
+        //Buscamos por el id que se pasa por params
+        const { nanoUrl } = req.params;
+        const shortUrl = await Url.findOne(nanoUrl);
+
+        if (!shortUrl)
+            return res.status(404).json({ error: `Url doesn't exist` });
+
+        return res.status(200).json({originalUrl:shortUrl.originalUrl});
 
 
-// }
+    } catch (error) {
+        console.log(error)
+        //Le indicamos que cualquier eror que tenga que ver con el formato del ObjectId
+        //
+        if (error.kind === "ObjectId") return res.status(404).json({ error: `Url doesn't exist` });
+        return res.status(500).json({ error: 'server error' });
+    }
+
+}
 
 urlController.deleteUrl = async (req, res) => {
     try {
@@ -88,7 +105,7 @@ urlController.deleteUrl = async (req, res) => {
 urlController.updateUrl = async (req, res) => {
     try {
         const { id } = req.params;
-        const {originalUrl}=req.body;
+        const { originalUrl } = req.body;
         console.log(originalUrl);
 
         const url = await Url.findById(id);
@@ -98,10 +115,10 @@ urlController.updateUrl = async (req, res) => {
         if (!url.uid.equals(req.uid))
             return res.status(401).json({ error: `That url belongs to another user and you aren't allowed to consult it` })
 
-            //Le indicamos que sustituya el valor de url.originalUrl
-            //por el nuevo valor de originalUrl y después se guarda.
-        url.originalUrl=originalUrl;
-        await url.save({originalUrl});
+        //Le indicamos que sustituya el valor de url.originalUrl
+        //por el nuevo valor de originalUrl y después se guarda.
+        url.originalUrl = originalUrl;
+        await url.save({ originalUrl });
 
         return res.status(200).json({ url });
 
