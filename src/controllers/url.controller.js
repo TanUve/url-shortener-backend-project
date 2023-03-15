@@ -59,7 +59,7 @@ urlController.getOneUrlNon = async (req, res) => {
     try {
         //Buscamos por el id que se pasa por params
         const { nanoUrl } = req.params;
-        const shortUrl = await Url.findOne(nanoUrl);
+        const shortUrl = await Url.findOne({nanoUrl});
 
         if (!shortUrl)
             return res.status(404).json({ error: `Url doesn't exist` });

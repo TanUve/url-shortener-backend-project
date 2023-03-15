@@ -9,7 +9,7 @@ router.get('/', pruebaIndex);
 
 router.use('/users', require('./user.routes'));
 router.use('/urls', require('./url.routes'));
-router.use('/', require('./redirect.routes'));
+router.use('/na', require('./redirect.routes'));
 router.use('/protected', require('./protected.routes'));
 
 
