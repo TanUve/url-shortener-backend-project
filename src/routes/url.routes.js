@@ -2,17 +2,15 @@ const router = require('express').Router();
 require('dotenv').config();
 const urlValidator = require('../middlewares/validateUrlFormat.middleware.js');
 const requireToken = require('../middlewares/requireToken.middleware.js');
-const { getUrls, createUrl } = require('../controllers/url.controller.js');
+const { getUrls, createUrl, getOneUrl, deleteUrl, updateUrl } = require('../controllers/url.controller.js');
 
 
 
 router.get('/all', requireToken, getUrls);
-// router.get('/:id');
+router.get('/:id', requireToken, getOneUrl);
 router.post('/create-url', urlValidator, requireToken, createUrl);
-// router.patch('/updateurl/:id')
-// router.delete('/deleteurl/:id')
+router.patch('/:id', urlValidator, requireToken, updateUrl);
+router.delete('/:id', urlValidator, requireToken, deleteUrl);
 
-// router.patch('/:_id', editUrl);
-// router.delete('/delete-url/:_id', deleteUrl);
 
 module.exports = router;
