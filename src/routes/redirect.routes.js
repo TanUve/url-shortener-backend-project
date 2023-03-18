@@ -1,4 +1,4 @@
-const redirectUrl = require('../controllers/redirect.controller.js');
+const redirectUrl = require('../controllers/Urls/redirect.controller.js');
 
 const router= require('express').Router();
 

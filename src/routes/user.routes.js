@@ -1,7 +1,9 @@
 const router = require('express').Router();
 require('dotenv').config()
-const { loginUser } = require('../controllers/userLogin.controller.js');
-const { registerUser } = require('../controllers/userRegister.controller.js');
+
+const { loginUser } = require('../controllers/Users/userLogin.controller.js');
+const { registerUser } = require('../controllers/Users/userRegister.controller.js');
+
 const userLoginMiddleware = require('../middlewares/userLogin.middleware.js');
 const userRegisterMiddleware = require('../middlewares/userRegiter.middleware.js');
 

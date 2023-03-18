@@ -1,5 +1,5 @@
 const urlController = {};
-const Url = require('../models/Urls.schema.js');
+const Url = require('../../models/Urls.schema.js');
 
 urlController.getOneUrlNon = async (req, res) => {
     try {

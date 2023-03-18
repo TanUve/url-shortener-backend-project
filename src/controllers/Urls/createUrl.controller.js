@@ -1,11 +1,12 @@
 const urlController = {};
-const Url = require('../models/Urls.schema.js');
 const { nanoid } = require('nanoid');
+const Urls = require('../../models/Urls.schema');
 
 urlController.createUrl = async (req, res) => {
     try {
+        
         const { originalUrl } = await req.body;
-        const newUrl = new Url({
+        const newUrl = new Urls({
             originalUrl: originalUrl,
             nanoUrl: nanoid(5),
             uid: req.uid

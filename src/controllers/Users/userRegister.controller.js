@@ -1,5 +1,5 @@
 const userController = {};
-const User = require('../models/Users.schema.js');
+const User = require('../../models/Users.schema.js');
 const bcrypt = require('bcrypt');
 
 

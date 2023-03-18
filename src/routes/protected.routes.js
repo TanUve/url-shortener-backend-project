@@ -1,6 +1,6 @@
 const router = require('express').Router();
 require('dotenv').config()
-const infoUser = require('../controllers/infoUser.controller.js');
+const infoUser = require('../controllers/Users/infoUser.controller.js');
 const requireToken = require('../middlewares/requireToken.middleware.js');
 
 

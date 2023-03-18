@@ -1,5 +1,5 @@
 const userController = {};
-const generateToken = require('../utils/tokenManager.js');
+const generateToken = require('../../utils/tokenManager.js');
 
 
 userController.loginUser = async (req, res) => {
